@@ -25,14 +25,20 @@ Family Travel Tracker is a web application designed to help families create a ha
    ```bash
    npm install
    ```
-3. Set up environment variables (e.g., `.env` file):
-   ```plaintext
-   DATABASE_URL=your_postgresql_url
-   PORT=your_port_number
-   ```
-4. Start the application:
+3. Set up the database:
+   - Use `world.dump` as the PostgreSQL database blueprint.
+   - Connect to your PostgreSQL database and restore the dump file using:
+     ```bash
+     psql -U your_username -d your_database -f world.dump
+     ```
+   - Update the `.env` file with your database connection details:
+     ```plaintext
+     DATABASE_URL=your_postgresql_url
+     PORT=your_port_number
+     ```
+4. Connect to the database and start the application:
    ```bash
-   npm start
+   node index.js
    ```
 5. Open `http://localhost:PORT` in your browser.
 
