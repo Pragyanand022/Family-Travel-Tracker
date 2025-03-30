@@ -1,15 +1,17 @@
 import express from "express";
 import bodyParser from "body-parser";
-import pg from "pg";
+import pg from "pg";  
+import env from "dotenv"
 
+env.config();
 const app = express();
 const port = 3000;
 
 const db = new pg.Client({
   user: "postgres",
-  host: "localhost",
+  host: process.env.host,
   database: "world",
-  password: "pnsql",
+  password: process.env.password,
   port: 5432,
 });
 db.connect();
@@ -18,12 +20,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 let currentUserId = 1;
-
+  
 // let users = [
 //   { id: 1, name: "Angela", color: "teal" },
 //   { id: 2, name: "Jack", color: "powderblue" },
 // ];
-
+ 
 async function checkVisisted() {
   const countryInfo = await db.query("SELECT country_code FROM visited_countries vc where vc.user_id = $1", [currentUserId]);
   const users = await db.query("select * from users ORDER BY id ASC;");
