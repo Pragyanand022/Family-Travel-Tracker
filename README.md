@@ -1,8 +1,5 @@
 # Family Travel Tracker
 
-![Family Travel Tracker](https://your-image-link-here.com)  
-*A simple and efficient way to manage and track family travel plans.*
-
 ## 🚀 Overview
 Family Travel Tracker is a web application designed to help families create a happy memory of the countries they have been to.
 
